@@ -1,4 +1,4 @@
-# SuperTC ![](https://i.imgur.com/YvmfS6d.png)
+![SuperTC](https://i.imgur.com/YvmfS6d.png)
 
 SuperTC Looks tough and protects tough
 
