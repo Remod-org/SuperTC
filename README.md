@@ -11,6 +11,8 @@ Usage on a PvE server, e.g. in conjunction with NextGenPVE, might be just a bit 
 
 If used with NoDecay, the building would also be impervious to decay.  Note that SuperTC does NOT protect the building from decay.
 
+![](https://imgur.com/ethO5AT)
+
 ## Commands
 
 If requirePermission is true in the config, a player with permission has access to the following command:
