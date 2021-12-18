@@ -1,4 +1,4 @@
-﻿#region License (GPL v3)
+#region License (GPL v3)
 /*
     DESCRIPTION
     Copyright (c) 2021 RFC1920 <desolationoutpostpve@gmail.com>
@@ -29,7 +29,7 @@ using Oxide.Core.Plugins;
 
 namespace Oxide.Plugins
 {
-    [Info("SuperTC", "RFC1920", "1.0.2")]
+    [Info("SuperTC", "RFC1920", "1.0.3")]
     [Description("SuperTC looks tough and protects tough")]
     internal class SuperTC : RustPlugin
     {
@@ -137,6 +137,17 @@ namespace Oxide.Plugins
             return null;
         }
 
+        private void OnEntityKill(BuildingPrivlidge entity)
+        {
+            if (entity == null) return;
+            if (entity?.net.ID > 0 && tcs.Contains(entity.net.ID))
+            {
+                DoLog("Removing TC from our list");
+                tcs.Remove(entity.net.ID);
+                SaveData();
+            }
+        }
+
         private void OnEntitySpawned(BuildingPrivlidge tc)
         {
             if (!startup) return;
@@ -217,6 +228,7 @@ namespace Oxide.Plugins
 
             public const string prefabdoor = "assets/prefabs/building/door.hinged/door.hinged.toptier.prefab";
             public const string prefabarry = "assets/prefabs/deployable/barricades/barricade.stone.prefab";
+            //public const string prefabsign = "assets/prefabs/misc/summer_dlc/photoframe/photoframe.portrait.prefab";
             public const string prefabsign = "assets/prefabs/deployable/signs/sign.small.wood.prefab";
             public const string signurl = "https://i.imgur.com/yvnxmfX.png";
 
@@ -260,8 +272,9 @@ namespace Oxide.Plugins
 
                 if (Instance.SignArtist)
                 {
+                    //sign = SpawnPart(prefabsign, sign, false, 0, 0, 0, 0f, 1.7f, 0.66f, entity, 0);
                     sign = SpawnPart(prefabsign, sign, false, 0, 0, 0, 0f, 1.5f, 0.58f, entity, 0);
-                    Instance.SignArtist?.Call("API_SkinSign", null, sign, signurl, true);
+                    Instance.SignArtist?.Call("API_SkinSign", null, sign, signurl);//, true);
                     sign.SetFlag(BaseEntity.Flags.Busy, true, true);
                     sign.SetFlag(BaseEntity.Flags.Locked, true);
                 }
@@ -305,11 +318,12 @@ namespace Oxide.Plugins
 
             public void OnDestroy()
             {
-                door1.Kill();
-                door2.Kill();
-                door3.Kill();
-                door4.Kill();
-                barry.Kill();
+                door1?.Kill();
+                door2?.Kill();
+                door3?.Kill();
+                door4?.Kill();
+                barry?.Kill();
+                sign?.Kill();
             }
         }
 
