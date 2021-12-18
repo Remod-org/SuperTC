@@ -218,7 +218,7 @@ namespace Oxide.Plugins
             public const string prefabdoor = "assets/prefabs/building/door.hinged/door.hinged.toptier.prefab";
             public const string prefabarry = "assets/prefabs/deployable/barricades/barricade.stone.prefab";
             public const string prefabsign = "assets/prefabs/deployable/signs/sign.small.wood.prefab";
-            public const string signurl = "https://code.remod.org/supertc.png";
+            public const string signurl = "https://i.imgur.com/yvnxmfX.png";
 
             public void Awake()
             {
