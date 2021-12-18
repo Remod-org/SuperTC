@@ -1,4 +1,5 @@
-# SuperTC
+# SuperTC ![](https://i.imgur.com/YvmfS6d.png)
+
 SuperTC Looks tough and protects tough
 
 When deployed, SuperTC protects itself with a toptier and stone shell as well as code that actually does the protection.
