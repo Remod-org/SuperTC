@@ -29,7 +29,7 @@ using Oxide.Core.Plugins;
 
 namespace Oxide.Plugins
 {
-    [Info("SuperTC", "RFC1920", "1.0.3")]
+    [Info("SuperTC", "RFC1920", "1.0.4")]
     [Description("SuperTC looks tough and protects tough")]
     internal class SuperTC : RustPlugin
     {
@@ -163,7 +163,12 @@ namespace Oxide.Plugins
 
             if (player.IsAdmin && configData.adminTCs)
             {
-                ExtendedTC obj = tc.gameObject.AddComponent<ExtendedTC>();
+                if (orDefault.Contains(ownerid))
+                {
+                    DoLog("Plugin enabled for admins by default, but player-disabled");
+                    return;
+                }
+                tc.gameObject.AddComponent<ExtendedTC>();
                 return;
             }
 
@@ -270,7 +275,7 @@ namespace Oxide.Plugins
                 barry.SetFlag(BaseEntity.Flags.Busy, true, true);
                 barry.SetFlag(BaseEntity.Flags.Locked, true);
 
-                if (Instance.SignArtist)
+                if (Instance.configData.showSign && Instance.SignArtist)
                 {
                     //sign = SpawnPart(prefabsign, sign, false, 0, 0, 0, 0f, 1.7f, 0.66f, entity, 0);
                     sign = SpawnPart(prefabsign, sign, false, 0, 0, 0, 0f, 1.5f, 0.58f, entity, 0);
@@ -333,6 +338,7 @@ namespace Oxide.Plugins
             public bool adminTCs;
             public bool defaultEnabled;
             public bool requirePermission;
+            public bool showSign;
             public bool debug;
             public VersionNumber Version;
         }
@@ -354,6 +360,7 @@ namespace Oxide.Plugins
                 adminTCs = false,
                 defaultEnabled = true,
                 requirePermission = true,
+                showSign = false,
                 debug = false,
                 Version = Version
             };

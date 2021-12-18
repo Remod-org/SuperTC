@@ -32,6 +32,7 @@ If requirePermission is true in the config, a player with permission has access 
   "adminTCs": false,
   "defaultEnabled": true,
   "requirePermission": false,
+  "showSign": false,
   "debug": true,
   "Version": {
     "Major": 1,
@@ -45,4 +46,4 @@ If requirePermission is true in the config, a player with permission has access 
   - adminTCs -- Spawn a SuperTC for admins
   - defaultEnabled -- If requirePermission is set, default to enabled.  The player can disable this with the /stc command
   - requirePermission -- require permission to allow deploying a SuperTC
-
+  - showSign -- If you have SignArtist installed you can enable this to show the SuperTC logo on an attached sign
