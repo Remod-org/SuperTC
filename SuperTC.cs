@@ -29,8 +29,8 @@ using Oxide.Core.Plugins;
 
 namespace Oxide.Plugins
 {
-    [Info("SuperTC", "RFC1920", "1.0.1")]
-    [Description("")]
+    [Info("SuperTC", "RFC1920", "1.0.2")]
+    [Description("SuperTC looks tough and protects tough")]
     internal class SuperTC : RustPlugin
     {
         [PluginReference]
@@ -339,7 +339,7 @@ namespace Oxide.Plugins
                 allTCs = false,
                 adminTCs = false,
                 defaultEnabled = true,
-                requirePermission = false,
+                requirePermission = true,
                 debug = false,
                 Version = Version
             };
